@@ -38,6 +38,25 @@ get('/albums/:id') do
   erb(:album)
 end
 
+get('/albums/:id/edit') do
+  @album = Album.find(params[:id].to_i())
+  erb(:edit_album)
+end
+
+patch('/albums/:id') do
+  @album = Album.find(params[:id].to_i())
+  @album.update(params[:name])
+  @albums = Album.all
+  erb(:albums)
+end
+
+delete('/albums/:id') do
+  @album = Album.find(params[:id].to_i())
+  @album.delete()
+  @albums = Album.all
+  erb(:albums)
+end
+
 post('/albums') do
   "This route will add an album to our list of albums. We can't access this by typing in the URL. In a future lesson, we will use a form that specifies a POST action to reach this route."
 end
