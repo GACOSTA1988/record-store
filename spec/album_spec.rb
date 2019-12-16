@@ -1,6 +1,7 @@
 require 'rspec'
 require 'album'
 
+
 describe '#Album' do
 
   before(:each) do
