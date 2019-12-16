@@ -16,6 +16,7 @@ get('/') do
 end
 
 get('/albums') do
+  # binding.pry
   @albums = Album.all
   erb(:albums)
 end
@@ -33,7 +34,8 @@ get('/albums/new') do
 end
 
 get('/albums/:id') do
-  "This route will show a specific album based on its ID. The value of ID here is #{params[:id]}."
+  @album = Album.find(params[:id].to_i())
+  erb(:album)
 end
 
 post('/albums') do
